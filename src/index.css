@@ -1,0 +1,8421 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #172033;
+  background: #edf3f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #edf3f9;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 100;
+  width: 260px;
+  height: 100vh;
+  padding: 26px 18px 20px;
+  background: #143361;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  min-height: 72px;
+  padding: 0 10px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 12px;
+  background: #ff8417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  color: #d8e4f3;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.sidebar-nav {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-link {
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 9px;
+  color: #e2ebf7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #ff8417;
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px 10px 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-footer > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-footer strong {
+  font-size: 12px;
+}
+
+.sidebar-footer span {
+  margin-top: 3px;
+  color: #b9c8db;
+  font-size: 10px;
+}
+
+.main-content {
+  width: calc(100% - 260px);
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: 260px;
+}
+
+.mobile-header,
+.sidebar-overlay {
+  display: none;
+}
+
+/* =========================================================
+   GENERAL BUTTONS
+   ========================================================= */
+
+.primary-btn,
+.secondary-btn,
+.back-btn,
+.add-spec-btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.primary-btn {
+  background: #ff8417;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: #ed7410;
+}
+
+.secondary-btn,
+.back-btn {
+  border: 1px solid #d7e0eb;
+  background: #fff;
+  color: #172033;
+}
+
+.add-spec-btn {
+  background: #edf5ff;
+  color: #174b8c;
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 32px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #14223a;
+  font-size: 30px;
+}
+
+.page-header p {
+  margin: 6px 0 0;
+  color: #65758b;
+}
+
+.stats-grid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: minmax(260px, 320px);
+  gap: 18px;
+}
+
+.stat-card {
+  min-height: 100px;
+  padding: 18px 20px;
+  border-radius: 15px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 7px 24px rgba(29, 50, 79, 0.05);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  border-radius: 12px;
+  background: #fff0e5;
+  color: #ff8417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-card span {
+  color: #65758b;
+  font-size: 13px;
+}
+
+.stat-card strong {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.quotation-list-card {
+  width: 100%;
+  margin-top: 25px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 7px 24px rgba(29, 50, 79, 0.05);
+}
+
+.list-header {
+  margin-bottom: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.list-header p {
+  margin: 5px 0 0;
+  color: #65758b;
+  font-size: 13px;
+}
+
+.search-box {
+  width: 280px;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d8e1ec;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 12px 13px;
+  background: #f5f8fc;
+  color: #607089;
+  text-align: left;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+td {
+  padding: 14px 13px;
+  border-bottom: 1px solid #e8edf3;
+  color: #172033;
+  font-size: 13px;
+}
+
+.quotation-number {
+  color: #123f7a;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.action-btn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #eaf3ff;
+  color: #2770d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn.edit {
+  background: #fff2df;
+  color: #e47b0b;
+}
+
+.action-btn.print {
+  background: #e7f8f0;
+  color: #139d68;
+}
+
+.action-btn.duplicate {
+  background: #edf1ff;
+  color: #526bd8;
+}
+
+.action-btn.delete {
+  background: #fff0f2;
+  color: #ed3d5c;
+}
+
+.mobile-quotation-list {
+  display: none;
+}
+
+.empty-quotation-state {
+  min-height: 260px;
+  padding: 35px 20px;
+  color: #65758b;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-quotation-state svg {
+  margin-bottom: 12px;
+  color: #ff8417;
+}
+
+.empty-quotation-state h3 {
+  margin: 0;
+  color: #172033;
+}
+
+.empty-quotation-state p {
+  margin: 7px 0 0;
+}
+
+/* =========================================================
+   CREATE PAGE
+   ========================================================= */
+
+.create-page {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+.create-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e1e7ef;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 15px;
+}
+
+.topbar-center {
+  min-width: 0;
+  text-align: center;
+}
+
+.save-success-message {
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #e8f8ef;
+  color: #138654;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.quotation-workspace {
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: minmax(390px, 520px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.quotation-form-panel {
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(29, 50, 79, 0.05);
+}
+
+.form-title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6ebf1;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.form-title-icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 11px;
+  background: #153d72;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-title h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.form-title p {
+  margin: 5px 0 0;
+  color: #65758b;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.form-section {
+  padding: 22px 0;
+  border-bottom: 1px solid #e7ecf2;
+}
+
+.form-section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-section > h3,
+.section-title-row h3 {
+  margin: 0 0 14px;
+  color: #153d72;
+  font-size: 17px;
+}
+
+.document-spacing-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title-row {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.section-title-row h3 {
+  margin-bottom: 3px;
+}
+
+.section-helper {
+  margin: 0;
+  color: #77869a;
+  font-size: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.three-column-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-group {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  color: #30435d;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.spec-editor-row input,
+.term-editor-row textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d8e1ec;
+  border-radius: 9px;
+  outline: 0;
+  background: #fff;
+  color: #172033;
+}
+
+.form-group input,
+.form-group select,
+.spec-editor-row input {
+  height: 43px;
+  padding: 0 11px;
+}
+
+.form-group textarea,
+.term-editor-row textarea {
+  min-height: 82px;
+  padding: 10px 11px;
+  resize: vertical;
+}
+
+.form-group .large-textarea {
+  min-height: 135px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.spec-editor-row input:focus,
+.term-editor-row textarea:focus {
+  border-color: #ff8417;
+  box-shadow: 0 0 0 3px rgba(255, 132, 23, 0.1);
+}
+
+.items-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-editor-card {
+  padding: 16px;
+  border: 1px solid #dfe6ee;
+  border-radius: 12px;
+  background: #f9fbfd;
+}
+
+.item-editor-header {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item-editor-header > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-number {
+  color: #ff8417;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.item-editor-header strong {
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove-card-btn,
+.remove-spec-btn {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #fff0f2;
+  color: #e43d5c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.specification-editor,
+.terms-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.spec-editor-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 36px;
+  gap: 8px;
+}
+
+.term-editor-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 36px;
+  align-items: start;
+  gap: 8px;
+}
+
+.term-index {
+  width: 28px;
+  height: 28px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: #edf3fa;
+  color: #153d72;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   SPACING CONTROLS
+   ========================================================= */
+
+.spacing-presets {
+  margin-bottom: 17px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.spacing-preset-btn {
+  min-height: 38px;
+  padding: 7px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #fff;
+  color: #40526b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.spacing-preset-btn.active {
+  border-color: #ff8417;
+  background: #fff1e5;
+  color: #d96708;
+}
+
+.spacing-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.spacing-controls-grid label {
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f9fbfd;
+}
+
+.spacing-controls-grid label > span {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #53647a;
+  font-size: 11px;
+}
+
+.spacing-controls-grid strong {
+  color: #153d72;
+}
+
+.spacing-controls-grid input[type='range'] {
+  width: 100%;
+  accent-color: #ff8417;
+}
+
+/* =========================================================
+   PREVIEW
+   ========================================================= */
+
+.preview-panel {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.preview-scale-container {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.a4-page {
+  position: relative;
+  width: 210mm;
+  min-width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 7px 30px rgba(22, 43, 70, 0.16);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.letterhead-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.quotation-document {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding:
+    var(--doc-top-padding, 44mm)
+    var(--doc-side-padding, 18mm)
+    var(--doc-bottom-padding, 24mm);
+  color: #000;
+  font-size: var(--doc-font-size, 10.5pt);
+  line-height: var(--doc-line-height, 1.42);
+}
+
+.quotation-top-information {
+  min-height: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.quotation-customer-info {
+  max-width: 65%;
+}
+
+.customer-label {
+  font-weight: 700;
+}
+
+.quotation-customer-info h2 {
+  margin: 2px 0 0;
+  font-size: 1em;
+}
+
+.quotation-customer-info p {
+  margin: 2px 0 0;
+  white-space: pre-line;
+}
+
+.reference-date {
+  margin-left: auto;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.quotation-number-reference {
+  margin-top: 3px;
+  text-align: right;
+  font-size: 0.82em;
+}
+
+.reference-subject-row {
+  margin-top: var(--doc-section-gap, 10px);
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px;
+}
+
+.reference-subject-row strong {
+  text-decoration: underline;
+}
+
+.reference-subject-row span {
+  text-align: center;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.reference-salutation {
+  margin:
+    var(--doc-section-gap, 10px)
+    0 0;
+}
+
+.reference-introduction {
+  margin:
+    var(--doc-section-gap, 10px)
+    0 0;
+  text-align: justify;
+  text-indent: 35px;
+}
+
+.quotation-item-section {
+  margin-top: var(--doc-item-gap, 8px);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.coal-item-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.coal-item-heading strong {
+  text-decoration: underline;
+}
+
+.price-per-unit-line {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reference-item-table {
+  margin-top: 6px;
+}
+
+.reference-item-header,
+.reference-item-body {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  text-align: center;
+}
+
+.reference-item-header {
+  font-weight: 700;
+}
+
+.reference-item-header span,
+.reference-item-body span {
+  padding: 2px 5px;
+}
+
+.reference-specifications {
+  margin-top: var(--doc-section-gap, 10px);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.reference-specifications h3 {
+  margin: 0 0 5px;
+  text-align: center;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+.reference-spec-grid {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.reference-spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.reference-terms {
+  margin-top: var(--doc-section-gap, 10px);
+}
+
+.reference-term-row {
+  margin-bottom: 2px;
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 4px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.reference-term-dash {
+  text-align: center;
+}
+
+.reference-query-text {
+  margin:
+    var(--doc-section-gap, 10px)
+    0 0;
+}
+
+.reference-signature {
+  margin-top: var(--doc-section-gap, 10px);
+}
+
+.reference-signature p {
+  margin: 0 0 3px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1250px) {
+  .quotation-workspace {
+    grid-template-columns: minmax(350px, 460px) minmax(0, 1fr);
+  }
+
+  .preview-scale-container {
+    justify-content: flex-start;
+    transform-origin: top left;
+  }
+
+  .a4-page {
+    transform: scale(0.72);
+    transform-origin: top left;
+    margin-right: calc(-210mm * 0.28);
+    margin-bottom: calc(-297mm * 0.28);
+  }
+}
+
+@media (max-width: 1050px) {
+  .quotation-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    display: flex;
+    justify-content: center;
+  }
+
+  .preview-scale-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .a4-page {
+    transform: scale(0.82);
+    transform-origin: top center;
+    margin-right: 0;
+    margin-bottom: calc(-297mm * 0.18);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 180;
+    width: 100%;
+    height: 64px;
+    padding: 0 14px;
+    background: #143361;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-brand {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .mobile-brand-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border-radius: 9px;
+    background: #ff8417;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-brand-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-brand-text strong {
+    font-size: 15px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .mobile-brand-text span {
+    margin-top: 3px;
+    color: #d8e4f3;
+    font-size: 8px;
+    letter-spacing: 1.7px;
+    white-space: nowrap;
+  }
+
+  .mobile-menu-button {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar {
+    display: flex;
+    width: min(285px, 86vw);
+    transform: translateX(-105%);
+    transition: transform 0.27s ease;
+    z-index: 220;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 210;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: rgba(10, 25, 45, 0.58);
+    backdrop-filter: blur(2px);
+  }
+
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .dashboard-page {
+    padding: 18px 14px;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  .page-header .primary-btn {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quotation-list-card {
+    padding: 15px;
+  }
+
+  .list-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop-quotation-table {
+    display: none;
+  }
+
+  .mobile-quotation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-quotation-card {
+    padding: 14px;
+    border: 1px solid #e0e7ef;
+    border-radius: 11px;
+    background: #fff;
+  }
+
+  .mobile-quotation-header {
+    padding-bottom: 11px;
+    border-bottom: 1px solid #edf1f5;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .mobile-quotation-header > div,
+  .mobile-quotation-details > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .mobile-quotation-header span,
+  .mobile-quotation-details span {
+    color: #718096;
+    font-size: 10px;
+  }
+
+  .mobile-quotation-header strong,
+  .mobile-quotation-details strong {
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-rate-badge {
+    height: fit-content;
+    padding: 5px 7px;
+    border-radius: 6px;
+    background: #fff1e5;
+    color: #d96708 !important;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .mobile-quotation-details {
+    padding: 12px 0;
+    display: grid;
+    gap: 9px;
+  }
+
+  .mobile-card-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .mobile-card-actions button {
+    min-height: 38px;
+    padding: 7px;
+    border: 0;
+    border-radius: 7px;
+    background: #edf5ff;
+    color: #246bc5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .mobile-card-actions .mobile-delete-btn {
+    background: #fff0f2;
+    color: #e43d5c;
+  }
+
+  .create-topbar {
+    position: relative;
+    top: auto;
+    padding: 12px 14px;
+    grid-template-columns: 1fr;
+  }
+
+  .topbar-center {
+    order: 3;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topbar-actions button,
+  .back-btn {
+    width: 100%;
+  }
+
+  .quotation-workspace {
+    padding: 14px;
+    display: block;
+  }
+
+  .quotation-form-panel {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .preview-panel {
+    width: 100%;
+    margin-top: 18px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .preview-scale-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .a4-page {
+    transform: scale(0.48);
+    transform-origin: top center;
+    margin-bottom: calc(-297mm * 0.52);
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid,
+  .three-column-grid,
+  .spacing-controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spacing-presets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-title-row {
+    flex-direction: column;
+  }
+
+  .section-title-row .add-spec-btn {
+    width: 100%;
+  }
+
+  .spec-editor-row {
+    grid-template-columns: minmax(0, 1fr) 36px;
+  }
+
+  .spec-editor-row input:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .term-editor-row {
+    grid-template-columns: 25px minmax(0, 1fr) 36px;
+  }
+
+  .a4-page {
+    transform: scale(0.44);
+    margin-bottom: calc(-297mm * 0.56);
+  }
+}
+
+@media (max-width: 430px) {
+  .dashboard-page {
+    padding: 12px 10px;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+  }
+
+  .quotation-list-card {
+    padding: 11px;
+  }
+
+  .topbar-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .quotation-workspace {
+    padding: 10px;
+  }
+
+  .quotation-form-panel {
+    padding: 13px;
+  }
+
+  .form-title h1 {
+    font-size: 19px;
+  }
+
+  .mobile-card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .a4-page {
+    transform: scale(0.40);
+    margin-bottom: calc(-297mm * 0.60);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, Arial, sans-serif;
+  color: #172033;
+  background: #edf3f9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #edf3f9;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 100;
+  width: 260px;
+  height: 100vh;
+  padding: 26px 18px 20px;
+  background: #143361;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  min-height: 72px;
+  padding: 0 10px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.brand-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border-radius: 12px;
+  background: #ff8417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  color: #d8e4f3;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.sidebar-nav {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.nav-link {
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 9px;
+  color: #e2ebf7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: #ff8417;
+  color: #fff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 20px 10px 5px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-footer > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-footer strong {
+  font-size: 12px;
+}
+
+.sidebar-footer span {
+  margin-top: 3px;
+  color: #b9c8db;
+  font-size: 10px;
+}
+
+.main-content {
+  width: calc(100% - 260px);
+  min-width: 0;
+  min-height: 100vh;
+  margin-left: 260px;
+}
+
+.mobile-header,
+.sidebar-overlay {
+  display: none;
+}
+
+/* =========================================================
+   GENERAL BUTTONS
+   ========================================================= */
+
+.primary-btn,
+.secondary-btn,
+.back-btn,
+.add-spec-btn {
+  min-height: 42px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.primary-btn {
+  background: #ff8417;
+  color: #fff;
+}
+
+.primary-btn:hover {
+  background: #ed7410;
+}
+
+.secondary-btn,
+.back-btn {
+  border: 1px solid #d7e0eb;
+  background: #fff;
+  color: #172033;
+}
+
+.add-spec-btn {
+  background: #edf5ff;
+  color: #174b8c;
+}
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 30px 32px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #14223a;
+  font-size: 30px;
+}
+
+.page-header p {
+  margin: 6px 0 0;
+  color: #65758b;
+}
+
+.stats-grid {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: minmax(260px, 320px);
+  gap: 18px;
+}
+
+.stat-card {
+  min-height: 100px;
+  padding: 18px 20px;
+  border-radius: 15px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 7px 24px rgba(29, 50, 79, 0.05);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  border-radius: 12px;
+  background: #fff0e5;
+  color: #ff8417;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-card > div:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-card span {
+  color: #65758b;
+  font-size: 13px;
+}
+
+.stat-card strong {
+  margin-top: 4px;
+  font-size: 24px;
+}
+
+.quotation-list-card {
+  width: 100%;
+  margin-top: 25px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 7px 24px rgba(29, 50, 79, 0.05);
+}
+
+.list-header {
+  margin-bottom: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.list-header p {
+  margin: 5px 0 0;
+  color: #65758b;
+  font-size: 13px;
+}
+
+.search-box {
+  width: 280px;
+  min-width: 220px;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #d8e1ec;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.search-box input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: 12px 13px;
+  background: #f5f8fc;
+  color: #607089;
+  text-align: left;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+td {
+  padding: 14px 13px;
+  border-bottom: 1px solid #e8edf3;
+  color: #172033;
+  font-size: 13px;
+}
+
+.quotation-number {
+  color: #123f7a;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.action-btn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #eaf3ff;
+  color: #2770d5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn.edit {
+  background: #fff2df;
+  color: #e47b0b;
+}
+
+.action-btn.print {
+  background: #e7f8f0;
+  color: #139d68;
+}
+
+.action-btn.duplicate {
+  background: #edf1ff;
+  color: #526bd8;
+}
+
+.action-btn.delete {
+  background: #fff0f2;
+  color: #ed3d5c;
+}
+
+.mobile-quotation-list {
+  display: none;
+}
+
+.empty-quotation-state {
+  min-height: 260px;
+  padding: 35px 20px;
+  color: #65758b;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-quotation-state svg {
+  margin-bottom: 12px;
+  color: #ff8417;
+}
+
+.empty-quotation-state h3 {
+  margin: 0;
+  color: #172033;
+}
+
+.empty-quotation-state p {
+  margin: 7px 0 0;
+}
+
+/* =========================================================
+   CREATE PAGE
+   ========================================================= */
+
+.create-page {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+.create-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  min-height: 72px;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e1e7ef;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 15px;
+}
+
+.topbar-center {
+  min-width: 0;
+  text-align: center;
+}
+
+.save-success-message {
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: #e8f8ef;
+  color: #138654;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 9px;
+}
+
+.quotation-workspace {
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
+  display: grid;
+  grid-template-columns: minmax(390px, 520px) minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.quotation-form-panel {
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 6px 22px rgba(29, 50, 79, 0.05);
+}
+
+.form-title {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6ebf1;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.form-title-icon {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 11px;
+  background: #153d72;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-title h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.form-title p {
+  margin: 5px 0 0;
+  color: #65758b;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.form-section {
+  padding: 22px 0;
+  border-bottom: 1px solid #e7ecf2;
+}
+
+.form-section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-section > h3,
+.section-title-row h3 {
+  margin: 0 0 14px;
+  color: #153d72;
+  font-size: 17px;
+}
+
+.document-spacing-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-title-row {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.section-title-row h3 {
+  margin-bottom: 3px;
+}
+
+.section-helper {
+  margin: 0;
+  color: #77869a;
+  font-size: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.three-column-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.form-group {
+  width: 100%;
+  min-width: 0;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  color: #30435d;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select,
+.spec-editor-row input,
+.term-editor-row textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d8e1ec;
+  border-radius: 9px;
+  outline: 0;
+  background: #fff;
+  color: #172033;
+}
+
+.form-group input,
+.form-group select,
+.spec-editor-row input {
+  height: 43px;
+  padding: 0 11px;
+}
+
+.form-group textarea,
+.term-editor-row textarea {
+  min-height: 82px;
+  padding: 10px 11px;
+  resize: vertical;
+}
+
+.form-group .large-textarea {
+  min-height: 135px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus,
+.spec-editor-row input:focus,
+.term-editor-row textarea:focus {
+  border-color: #ff8417;
+  box-shadow: 0 0 0 3px rgba(255, 132, 23, 0.1);
+}
+
+.items-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.item-editor-card {
+  padding: 16px;
+  border: 1px solid #dfe6ee;
+  border-radius: 12px;
+  background: #f9fbfd;
+}
+
+.item-editor-header {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.item-editor-header > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-number {
+  color: #ff8417;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.item-editor-header strong {
+  margin-top: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove-card-btn,
+.remove-spec-btn {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: #fff0f2;
+  color: #e43d5c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.specification-editor,
+.terms-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.spec-editor-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 36px;
+  gap: 8px;
+}
+
+.term-editor-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) 36px;
+  align-items: start;
+  gap: 8px;
+}
+
+.term-index {
+  width: 28px;
+  height: 28px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: #edf3fa;
+  color: #153d72;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   SPACING CONTROLS
+   ========================================================= */
+
+.spacing-presets {
+  margin-bottom: 17px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.spacing-preset-btn {
+  min-height: 38px;
+  padding: 7px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: #fff;
+  color: #40526b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.spacing-preset-btn.active {
+  border-color: #ff8417;
+  background: #fff1e5;
+  color: #d96708;
+}
+
+.spacing-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.spacing-controls-grid label {
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f9fbfd;
+}
+
+.spacing-controls-grid label > span {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #53647a;
+  font-size: 11px;
+}
+
+.spacing-controls-grid strong {
+  color: #153d72;
+}
+
+.spacing-controls-grid input[type='range'] {
+  width: 100%;
+  accent-color: #ff8417;
+}
+
+/* =========================================================
+   PREVIEW
+   ========================================================= */
+
+.preview-panel {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.preview-scale-container {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.a4-page {
+  position: relative;
+  width: 210mm;
+  min-width: 210mm;
+  height: 297mm;
+  min-height: 297mm;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 7px 30px rgba(22, 43, 70, 0.16);
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.letterhead-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.quotation-document {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  padding:
+    var(--doc-top-padding, 44mm)
+    var(--doc-side-padding, 18mm)
+    var(--doc-bottom-padding, 24mm);
+  color: #000;
+  font-size: var(--doc-font-size, 10.5pt);
+  line-height: var(--doc-line-height, 1.42);
+}
+
+.quotation-top-information {
+  min-height: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.quotation-customer-info {
+  max-width: 65%;
+}
+
+.customer-label {
+  font-weight: 700;
+}
+
+.quotation-customer-info h2 {
+  margin: 2px 0 0;
+  font-size: 1em;
+}
+
+.quotation-customer-info p {
+  margin: 2px 0 0;
+  white-space: pre-line;
+}
+
+.reference-date {
+  margin-left: auto;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.quotation-number-reference {
+  margin-top: 3px;
+  text-align: right;
+  font-size: 0.82em;
+}
+
+.reference-subject-row {
+  margin-top: var(--doc-section-gap, 10px);
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px;
+}
+
+.reference-subject-row strong {
+  text-decoration: underline;
+}
+
+.reference-subject-row span {
+  text-align: center;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.reference-salutation {
+  margin:
+    var(--doc-section-gap, 10px)
+    0 0;
+}
+
+.reference-introduction {
+  margin:
+    var(--doc-section-gap, 10px)
+    0 0;
+  text-align: justify;
+  text-indent: 35px;
+}
+
+.quotation-item-section {
+  margin-top: var(--doc-item-gap, 8px);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.coal-item-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.coal-item-heading strong {
+  text-decoration: underline;
+}
+
+.price-per-unit-line {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reference-item-table {
+  margin-top: 6px;
+}
+
+.reference-item-header,
+.reference-item-body {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  text-align: center;
+}
+
+.reference-item-header {
+  font-weight: 700;
+}
+
+.reference-item-header span,
+.reference-item-body span {
+  padding: 2px 5px;
+}
+
+.reference-specifications {
+  margin-top: var(--doc-section-gap, 10px);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.reference-specifications h3 {
+  margin: 0 0 5px;
+  text-align: center;
+  font-size: 1em;
+  text-decoration: underline;
+}
+
+.reference-spec-grid {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.reference-spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.reference-terms {
+  margin-top: var(--doc-section-gap, 10px);
+}
+
+.reference-term-row {
+  margin-bottom: 2px;
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 4px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.reference-term-dash {
+  text-align: center;
+}
+
+.reference-query-text {
+  margin:
+    var(--doc-section-gap, 10px)
+    0 0;
+}
+
+.reference-signature {
+  margin-top: var(--doc-section-gap, 10px);
+}
+
+.reference-signature p {
+  margin: 0 0 3px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1250px) {
+  .quotation-workspace {
+    grid-template-columns: minmax(350px, 460px) minmax(0, 1fr);
+  }
+
+  .preview-scale-container {
+    justify-content: flex-start;
+    transform-origin: top left;
+  }
+
+  .a4-page {
+    transform: scale(0.72);
+    transform-origin: top left;
+    margin-right: calc(-210mm * 0.28);
+    margin-bottom: calc(-297mm * 0.28);
+  }
+}
+
+@media (max-width: 1050px) {
+  .quotation-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    display: flex;
+    justify-content: center;
+  }
+
+  .preview-scale-container {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .a4-page {
+    transform: scale(0.82);
+    transform-origin: top center;
+    margin-right: 0;
+    margin-bottom: calc(-297mm * 0.18);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  .mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 180;
+    width: 100%;
+    height: 64px;
+    padding: 0 14px;
+    background: #143361;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mobile-brand {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .mobile-brand-icon {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+    border-radius: 9px;
+    background: #ff8417;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-brand-text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-brand-text strong {
+    font-size: 15px;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  .mobile-brand-text span {
+    margin-top: 3px;
+    color: #d8e4f3;
+    font-size: 8px;
+    letter-spacing: 1.7px;
+    white-space: nowrap;
+  }
+
+  .mobile-menu-button {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar {
+    display: flex;
+    width: min(285px, 86vw);
+    transform: translateX(-105%);
+    transition: transform 0.27s ease;
+    z-index: 220;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 210;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: rgba(10, 25, 45, 0.58);
+    backdrop-filter: blur(2px);
+  }
+
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .dashboard-page {
+    padding: 18px 14px;
+  }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  .page-header h1 {
+    font-size: 25px;
+  }
+
+  .page-header .primary-btn {
+    width: 100%;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quotation-list-card {
+    padding: 15px;
+  }
+
+  .list-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-box {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .desktop-quotation-table {
+    display: none;
+  }
+
+  .mobile-quotation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-quotation-card {
+    padding: 14px;
+    border: 1px solid #e0e7ef;
+    border-radius: 11px;
+    background: #fff;
+  }
+
+  .mobile-quotation-header {
+    padding-bottom: 11px;
+    border-bottom: 1px solid #edf1f5;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .mobile-quotation-header > div,
+  .mobile-quotation-details > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .mobile-quotation-header span,
+  .mobile-quotation-details span {
+    color: #718096;
+    font-size: 10px;
+  }
+
+  .mobile-quotation-header strong,
+  .mobile-quotation-details strong {
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-rate-badge {
+    height: fit-content;
+    padding: 5px 7px;
+    border-radius: 6px;
+    background: #fff1e5;
+    color: #d96708 !important;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .mobile-quotation-details {
+    padding: 12px 0;
+    display: grid;
+    gap: 9px;
+  }
+
+  .mobile-card-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+  }
+
+  .mobile-card-actions button {
+    min-height: 38px;
+    padding: 7px;
+    border: 0;
+    border-radius: 7px;
+    background: #edf5ff;
+    color: #246bc5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .mobile-card-actions .mobile-delete-btn {
+    background: #fff0f2;
+    color: #e43d5c;
+  }
+
+  .create-topbar {
+    position: relative;
+    top: auto;
+    padding: 12px 14px;
+    grid-template-columns: 1fr;
+  }
+
+  .topbar-center {
+    order: 3;
+  }
+
+  .topbar-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topbar-actions button,
+  .back-btn {
+    width: 100%;
+  }
+
+  .quotation-workspace {
+    padding: 14px;
+    display: block;
+  }
+
+  .quotation-form-panel {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .preview-panel {
+    width: 100%;
+    margin-top: 18px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .preview-scale-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .a4-page {
+    transform: scale(0.48);
+    transform-origin: top center;
+    margin-bottom: calc(-297mm * 0.52);
+  }
+}
+
+@media (max-width: 600px) {
+  .form-grid,
+  .three-column-grid,
+  .spacing-controls-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spacing-presets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-title-row {
+    flex-direction: column;
+  }
+
+  .section-title-row .add-spec-btn {
+    width: 100%;
+  }
+
+  .spec-editor-row {
+    grid-template-columns: minmax(0, 1fr) 36px;
+  }
+
+  .spec-editor-row input:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .term-editor-row {
+    grid-template-columns: 25px minmax(0, 1fr) 36px;
+  }
+
+  .a4-page {
+    transform: scale(0.44);
+    margin-bottom: calc(-297mm * 0.56);
+  }
+}
+
+@media (max-width: 430px) {
+  .dashboard-page {
+    padding: 12px 10px;
+  }
+
+  .page-header h1 {
+    font-size: 22px;
+  }
+
+  .quotation-list-card {
+    padding: 11px;
+  }
+
+  .topbar-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .quotation-workspace {
+    padding: 10px;
+  }
+
+  .quotation-form-panel {
+    padding: 13px;
+  }
+
+  .form-title h1 {
+    font-size: 19px;
+  }
+
+  .mobile-card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .a4-page {
+    transform: scale(0.40);
+    margin-bottom: calc(-297mm * 0.60);
+  }
+}
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+/* =========================================================
+   ADVANCED RESPONSIVE SYSTEM - V2
+   AL FALAH COAL TRADER
+   Paste this COMPLETE block at the END of index.css
+   ========================================================= */
+
+/* =========================================================
+   1. DESKTOP / LAPTOP PREVIEW SYSTEM
+   A4 paper fits according to available screen width
+   ========================================================= */
+
+.preview-panel {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.preview-scale-container {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: visible;
+}
+
+/*
+  Default large desktop:
+  Keep actual A4 dimensions.
+*/
+.a4-page {
+  flex: 0 0 auto;
+  transform-origin: top center;
+}
+
+/* =========================================================
+   2. VERY LARGE DESKTOP
+   ========================================================= */
+
+@media screen and (min-width: 1800px) {
+  .quotation-workspace {
+    grid-template-columns:
+      minmax(470px, 540px)
+      minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .a4-page {
+    transform: scale(0.92);
+    margin-bottom: calc(-297mm * 0.08);
+  }
+}
+
+/* =========================================================
+   3. NORMAL DESKTOP / LARGE LAPTOP
+   1441px - 1799px
+   ========================================================= */
+
+@media screen and (min-width: 1441px) and (max-width: 1799px) {
+  .quotation-workspace {
+    grid-template-columns:
+      minmax(430px, 500px)
+      minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .a4-page {
+    transform: scale(0.78);
+    margin-bottom: calc(-297mm * 0.22);
+  }
+}
+
+/* =========================================================
+   4. STANDARD LAPTOP
+   1281px - 1440px
+   ========================================================= */
+
+@media screen and (min-width: 1281px) and (max-width: 1440px) {
+  .quotation-workspace {
+    grid-template-columns:
+      minmax(390px, 450px)
+      minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .quotation-form-panel {
+    padding: 18px;
+  }
+
+  .a4-page {
+    transform: scale(0.66);
+    margin-bottom: calc(-297mm * 0.34);
+  }
+}
+
+/* =========================================================
+   5. SMALL LAPTOP
+   1101px - 1280px
+   ========================================================= */
+
+@media screen and (min-width: 1101px) and (max-width: 1280px) {
+  .quotation-workspace {
+    grid-template-columns:
+      minmax(350px, 410px)
+      minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .quotation-form-panel {
+    padding: 16px;
+  }
+
+  .form-title h1 {
+    font-size: 20px;
+  }
+
+  .a4-page {
+    transform: scale(0.56);
+    margin-bottom: calc(-297mm * 0.44);
+  }
+}
+
+/* =========================================================
+   6. SHORT-HEIGHT LAPTOP FIX
+   Example: 1366x768 / 1536x864
+   Paper becomes smaller so more of the page is visible.
+   ========================================================= */
+
+@media screen and (min-width: 1051px) and (max-height: 900px) {
+  .a4-page {
+    transform: scale(0.61);
+    margin-bottom: calc(-297mm * 0.39);
+  }
+}
+
+@media screen and (min-width: 1051px) and (max-height: 800px) {
+  .a4-page {
+    transform: scale(0.54);
+    margin-bottom: calc(-297mm * 0.46);
+  }
+}
+
+/* =========================================================
+   7. TABLET LANDSCAPE
+   ========================================================= */
+
+@media screen and (min-width: 851px) and (max-width: 1100px) {
+  .quotation-workspace {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px;
+  }
+
+  .quotation-form-panel {
+    width: 100%;
+  }
+
+  .preview-panel {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .preview-scale-container {
+    justify-content: center;
+  }
+
+  .a4-page {
+    transform: scale(0.82);
+    transform-origin: top center;
+    margin-bottom: calc(-297mm * 0.18);
+  }
+}
+
+/* =========================================================
+   8. MOBILE BASE
+   0px - 850px
+   ========================================================= */
+
+@media screen and (max-width: 850px) {
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  /*
+    Smaller mobile navbar
+  */
+  .mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 180;
+
+    width: 100%;
+    height: 52px;
+    min-height: 52px;
+
+    padding: 0 10px;
+
+    background: #143361;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow: 0 2px 8px rgba(10, 30, 55, 0.12);
+  }
+
+  .mobile-brand {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+  }
+
+  .mobile-brand-icon {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    border-radius: 8px;
+
+    background: #ff8417;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-brand-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-brand-text {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1;
+  }
+
+  .mobile-brand-text strong {
+    font-size: 13px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .mobile-brand-text span {
+    margin-top: 3px;
+
+    color: #d8e4f3;
+
+    font-size: 7px;
+    line-height: 1;
+
+    letter-spacing: 1.4px;
+
+    white-space: nowrap;
+  }
+
+  /*
+    Smaller hamburger button
+  */
+  .mobile-menu-button {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-menu-button svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  /*
+    Mobile sidebar drawer
+  */
+  .sidebar {
+    width: min(260px, 82vw);
+
+    padding: 18px 14px 16px;
+
+    transform: translateX(-105%);
+
+    transition:
+      transform 0.27s ease,
+      box-shadow 0.27s ease;
+
+    z-index: 220;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+
+    box-shadow:
+      10px 0 35px
+      rgba(5, 20, 40, 0.25);
+  }
+
+  .sidebar .brand {
+    min-height: 58px;
+
+    padding:
+      0 7px
+      16px;
+  }
+
+  .sidebar .brand-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-basis: 40px;
+
+    border-radius: 10px;
+  }
+
+  .sidebar .brand-icon svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .sidebar .brand h2 {
+    font-size: 17px;
+  }
+
+  .sidebar .brand p {
+    margin-top: 4px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.6px;
+  }
+
+  .sidebar-nav {
+    padding-top: 17px;
+    gap: 6px;
+  }
+
+  .nav-link {
+    min-height: 43px;
+
+    padding: 0 12px;
+
+    border-radius: 8px;
+
+    gap: 10px;
+
+    font-size: 14px;
+  }
+
+  .nav-link svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sidebar-footer {
+    padding:
+      15px 7px
+      2px;
+  }
+
+  /*
+    Compact mobile top action area
+  */
+  .create-topbar {
+    position: relative;
+    top: auto;
+
+    width: 100%;
+
+    padding: 8px 10px;
+
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+
+    background: #fff;
+  }
+
+  .create-topbar .back-btn {
+    width: 100%;
+    min-height: 36px;
+    height: 36px;
+
+    padding: 0 11px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+  }
+
+  .create-topbar .back-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .topbar-actions {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 0.8fr)
+      minmax(0, 1.2fr);
+
+    gap: 7px;
+  }
+
+  /*
+    Print / Save PDF smaller on mobile only
+  */
+  .topbar-actions .secondary-btn {
+    min-width: 0;
+    min-height: 36px;
+    height: 36px;
+
+    padding: 0 8px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    overflow: hidden;
+  }
+
+  .topbar-actions .secondary-btn svg {
+    width: 15px;
+    height: 15px;
+
+    flex: 0 0 15px;
+  }
+
+  /*
+    Save / Update button compact
+  */
+  .topbar-actions .primary-btn {
+    min-width: 0;
+    min-height: 36px;
+    height: 36px;
+
+    padding: 0 9px;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    overflow: hidden;
+  }
+
+  .topbar-actions .primary-btn svg {
+    width: 15px;
+    height: 15px;
+
+    flex: 0 0 15px;
+  }
+
+  .topbar-center {
+    order: 3;
+  }
+
+  .save-success-message {
+    display: block;
+
+    width: 100%;
+
+    padding: 6px 8px;
+
+    font-size: 11px;
+
+    text-align: center;
+  }
+
+  /*
+    Mobile workspace
+  */
+  .quotation-workspace {
+    width: 100%;
+
+    padding: 10px;
+
+    display: block;
+  }
+
+  .quotation-form-panel {
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 12px;
+  }
+
+  .form-title {
+    padding-bottom: 15px;
+
+    gap: 10px;
+  }
+
+  .form-title-icon {
+    width: 40px;
+    height: 40px;
+
+    flex: 0 0 40px;
+
+    border-radius: 9px;
+  }
+
+  .form-title-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .form-title h1 {
+    font-size: 18px;
+  }
+
+  .form-title p {
+    margin-top: 4px;
+
+    font-size: 11px;
+
+    line-height: 1.35;
+  }
+
+  .form-section {
+    padding: 17px 0;
+  }
+
+  .form-section > h3,
+  .section-title-row h3 {
+    font-size: 15px;
+  }
+
+  /*
+    More compact document spacing section
+  */
+  .spacing-presets {
+    margin-bottom: 12px;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 5px;
+  }
+
+  .spacing-preset-btn {
+    min-width: 0;
+    min-height: 34px;
+
+    padding: 5px 3px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+  }
+
+  .spacing-controls-grid {
+    grid-template-columns: 1fr;
+
+    gap: 8px;
+  }
+
+  .spacing-controls-grid label {
+    padding: 9px;
+  }
+
+  .spacing-controls-grid label > span {
+    margin-bottom: 5px;
+
+    font-size: 10px;
+  }
+
+  /*
+    Mobile form fields
+  */
+  .form-grid,
+  .three-column-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .form-group {
+    margin-bottom: 11px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .spec-editor-row input {
+    height: 40px;
+
+    padding: 0 10px;
+
+    font-size: 13px;
+  }
+
+  .form-group textarea,
+  .term-editor-row textarea {
+    padding: 9px 10px;
+
+    font-size: 13px;
+  }
+
+  /*
+    Mobile quotation preview
+  */
+  .preview-panel {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 0;
+
+    overflow: hidden;
+  }
+
+  .preview-scale-container {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    overflow: visible;
+  }
+
+  .a4-page {
+    transform: scale(0.47);
+
+    transform-origin: top center;
+
+    margin-bottom:
+      calc(-297mm * 0.53);
+  }
+}
+
+/* =========================================================
+   9. MEDIUM MOBILE
+   481px - 650px
+   ========================================================= */
+
+@media screen and (min-width: 481px) and (max-width: 650px) {
+  .a4-page {
+    transform: scale(0.55);
+
+    margin-bottom:
+      calc(-297mm * 0.45);
+  }
+}
+
+/* =========================================================
+   10. STANDARD MOBILE
+   381px - 480px
+   ========================================================= */
+
+@media screen and (min-width: 381px) and (max-width: 480px) {
+  .quotation-workspace {
+    padding: 8px;
+  }
+
+  .quotation-form-panel {
+    padding: 12px;
+  }
+
+  .a4-page {
+    transform: scale(0.455);
+
+    margin-bottom:
+      calc(-297mm * 0.545);
+  }
+}
+
+/* =========================================================
+   11. SMALL MOBILE
+   <= 380px
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+  .mobile-header {
+    height: 50px;
+    min-height: 50px;
+
+    padding: 0 8px;
+  }
+
+  .mobile-brand-icon {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+  }
+
+  .mobile-brand-text strong {
+    font-size: 12px;
+  }
+
+  .mobile-brand-text span {
+    font-size: 6.5px;
+  }
+
+  .mobile-menu-button {
+    width: 34px;
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .create-topbar {
+    padding: 7px 8px;
+  }
+
+  .topbar-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .topbar-actions .secondary-btn,
+  .topbar-actions .primary-btn {
+    min-height: 34px;
+    height: 34px;
+
+    padding: 0 5px;
+
+    font-size: 10px;
+  }
+
+  .quotation-workspace {
+    padding: 7px;
+  }
+
+  .quotation-form-panel {
+    padding: 11px;
+  }
+
+  .spacing-presets {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .a4-page {
+    transform: scale(0.40);
+
+    margin-bottom:
+      calc(-297mm * 0.60);
+  }
+}
+
+/* =========================================================
+   12. EXTRA SMALL MOBILE
+   <= 340px
+   ========================================================= */
+
+@media screen and (max-width: 340px) {
+  .topbar-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .a4-page {
+    transform: scale(0.355);
+
+    margin-bottom:
+      calc(-297mm * 0.645);
+  }
+}
+
+/* =========================================================
+   13. LANDSCAPE MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 850px) and (orientation: landscape) {
+  .mobile-header {
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .create-topbar {
+    grid-template-columns:
+      minmax(130px, 0.7fr)
+      minmax(0, 1fr);
+
+    align-items: center;
+  }
+
+  .topbar-actions {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .topbar-center {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================================================
+   14. DESKTOP HEIGHT-BASED A4 OPTIMIZATION
+   Makes full paper easier to see without horizontal cutting
+   ========================================================= */
+
+@media screen and (min-width: 1051px) and (min-height: 901px) {
+  .preview-panel {
+    min-height: calc(100vh - 115px);
+  }
+}
+
+@media screen and (min-width: 1281px) and (min-height: 950px) {
+  .a4-page {
+    transform: scale(0.72);
+    margin-bottom: calc(-297mm * 0.28);
+  }
+}
+
+@media screen and (min-width: 1500px) and (min-height: 950px) {
+  .a4-page {
+    transform: scale(0.82);
+    margin-bottom: calc(-297mm * 0.18);
+  }
+}
+
+/* =========================================================
+   15. PRINT SAFETY
+   Never allow responsive transforms in actual PDF/Print
+   ========================================================= */
+
+
+
+/* =========================================================
+   AL FALAH COAL TRADER
+   ADVANCED MOBILE SIDEBAR + DASHBOARD RESPONSIVE FIX V3
+   Paste at the END of index.css
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESPONSIVE SAFETY
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+.app-shell,
+.main-content,
+.dashboard-page,
+.dashboard-content {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   DESKTOP SIDEBAR
+   ========================================================= */
+
+@media screen and (min-width: 851px) {
+
+  .sidebar {
+    width: 250px;
+  }
+
+  .main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET + MOBILE BASE
+   ========================================================= */
+
+@media screen and (max-width: 850px) {
+
+  /*
+   * Main shell
+   */
+
+  .app-shell {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .main-content {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+
+    overflow-x: hidden;
+  }
+
+
+  /* =======================================================
+     SMALL MOBILE HEADER
+     ======================================================= */
+
+  .mobile-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    z-index: 300;
+
+    width: 100%;
+    height: 52px;
+    min-height: 52px;
+
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #163b6d;
+    color: #ffffff;
+
+    box-shadow:
+      0 3px 12px rgba(13, 42, 78, 0.16);
+  }
+
+
+  /*
+   * Brand
+   */
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 7px;
+  }
+
+  .mobile-brand-icon {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff8216;
+    color: #ffffff;
+  }
+
+  .mobile-brand-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-brand > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+
+    line-height: 1;
+  }
+
+  .mobile-brand strong {
+    font-size: 13px;
+    line-height: 1;
+
+    white-space: nowrap;
+  }
+
+  .mobile-brand span {
+    margin-top: 3px;
+
+    color: #d9e5f4;
+
+    font-size: 7px;
+    line-height: 1;
+
+    letter-spacing: 1.3px;
+
+    white-space: nowrap;
+  }
+
+
+  /*
+   * Hamburger
+   */
+
+  .mobile-menu-button {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+      rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .mobile-menu-button:active {
+    transform: scale(0.94);
+  }
+
+  .mobile-menu-button svg {
+    width: 21px;
+    height: 21px;
+  }
+
+
+  /* =======================================================
+     NARROW MOBILE SIDEBAR
+     Previous width was too large.
+     New width: 220px
+     ======================================================= */
+
+  .sidebar {
+    position: fixed;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    z-index: 500;
+
+    width: 220px !important;
+    max-width: 78vw !important;
+    height: 100dvh;
+
+    padding: 15px 11px 13px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #173c6d;
+
+    transform: translateX(-105%);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+
+    box-shadow:
+      12px 0 35px
+      rgba(6, 25, 50, 0.3);
+  }
+
+
+  /*
+   * Sidebar backdrop
+   */
+
+  .sidebar-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 450;
+
+    width: 100%;
+    height: 100dvh;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+
+    background:
+      rgba(9, 25, 47, 0.55);
+
+    backdrop-filter: blur(2px);
+
+    cursor: pointer;
+  }
+
+
+  /* =======================================================
+     SIDEBAR BRAND - COMPACT
+     ======================================================= */
+
+  .sidebar .brand {
+    width: 100%;
+    min-height: auto;
+
+    padding: 4px 5px 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.13);
+  }
+
+  .sidebar .brand-icon {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ff8216;
+    color: #ffffff;
+  }
+
+  .sidebar .brand-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .sidebar .brand > div:last-child {
+    min-width: 0;
+  }
+
+  .sidebar .brand h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    line-height: 1.05;
+
+    white-space: nowrap;
+  }
+
+  .sidebar .brand p {
+    margin: 4px 0 0;
+
+    color: #d5e2f3;
+
+    font-size: 8px;
+    line-height: 1;
+
+    letter-spacing: 1.4px;
+
+    white-space: nowrap;
+  }
+
+
+  /* =======================================================
+     SIDEBAR NAVIGATION
+     ======================================================= */
+
+  .sidebar-nav {
+    width: 100%;
+
+    padding-top: 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+  }
+
+  .nav-link {
+    width: 100%;
+    min-height: 40px;
+
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    border-radius: 8px;
+
+    color: #e8f0fa;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+      background 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .nav-link svg {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+  }
+
+  .nav-link.active {
+    background: #ff8216;
+    color: #ffffff;
+
+    box-shadow:
+      0 5px 15px
+      rgba(255, 130, 22, 0.2);
+  }
+
+  .nav-link:active {
+    transform: scale(0.98);
+  }
+
+
+  /* =======================================================
+     SIDEBAR FOOTER
+     ======================================================= */
+
+  .sidebar-footer {
+    width: 100%;
+
+    margin-top: auto;
+
+    padding: 13px 5px 3px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    border-top:
+      1px solid rgba(255, 255, 255, 0.13);
+  }
+
+  .sidebar-footer svg {
+    width: 16px;
+    height: 16px;
+
+    flex: 0 0 16px;
+  }
+
+  .sidebar-footer strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  .sidebar-footer span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #c7d7eb;
+
+    font-size: 8px;
+  }
+
+
+  /* =======================================================
+     DASHBOARD PAGE
+     ======================================================= */
+
+  .dashboard-page {
+    width: 100%;
+    max-width: 100%;
+
+    padding: 14px 10px 24px;
+
+    overflow-x: hidden;
+  }
+
+
+  /*
+   * Dashboard top heading
+   */
+
+  .dashboard-header {
+    width: 100%;
+
+    margin-bottom: 16px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .dashboard-header > div:first-child {
+    min-width: 0;
+  }
+
+  .dashboard-header h1 {
+    margin: 0;
+
+    color: #102b50;
+
+    font-size: 22px;
+    line-height: 1.15;
+
+    letter-spacing: -0.4px;
+  }
+
+  .dashboard-header p {
+    max-width: 340px;
+
+    margin: 5px 0 0;
+
+    color: #607795;
+
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+
+  /*
+   * New quotation button
+   */
+
+  .dashboard-header .primary-btn,
+  .dashboard-new-btn,
+  .new-quotation-btn {
+    width: 100%;
+    min-height: 42px;
+    height: 42px;
+
+    padding: 0 14px;
+
+    border: none;
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    background: #ff8216;
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    box-shadow:
+      0 6px 16px
+      rgba(255, 130, 22, 0.17);
+  }
+
+
+  /* =======================================================
+     DASHBOARD STAT CARDS
+     ======================================================= */
+
+  .stats-grid,
+  .dashboard-stats {
+    width: 100%;
+
+    margin-bottom: 16px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 10px;
+  }
+
+  .stat-card {
+    width: 100%;
+    min-height: 88px;
+
+    padding: 14px 16px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border:
+      1px solid rgba(21, 61, 108, 0.05);
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 7px 24px
+      rgba(23, 60, 109, 0.06);
+  }
+
+  .stat-icon,
+  .stat-card-icon {
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 45px;
+
+    border-radius: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff0e4;
+    color: #ff8216;
+  }
+
+  .stat-icon svg,
+  .stat-card-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .stat-card p,
+  .stat-card span {
+    color: #667d9a;
+
+    font-size: 12px;
+  }
+
+  .stat-card h2,
+  .stat-card strong {
+    color: #102b50;
+  }
+
+
+  /* =======================================================
+     QUOTATION HISTORY SECTION
+     ======================================================= */
+
+  .quotation-history,
+  .history-section,
+  .recent-quotations {
+    width: 100%;
+
+    padding: 13px 10px;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 8px 25px
+      rgba(23, 60, 109, 0.055);
+  }
+
+
+  /*
+   * History header
+   */
+
+  .history-header,
+  .section-header {
+    width: 100%;
+
+    margin-bottom: 12px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 11px;
+  }
+
+  .history-header h2,
+  .section-header h2 {
+    margin: 0;
+
+    color: #102b50;
+
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .history-header p,
+  .section-header p {
+    margin: 4px 0 0;
+
+    color: #6c819c;
+
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+
+  /* =======================================================
+     SEARCH BOX
+     ======================================================= */
+
+  .search-box,
+  .quotation-search {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+  }
+
+  .search-box input,
+  .quotation-search input {
+    width: 100%;
+    height: 42px;
+
+    padding:
+      0 12px
+      0 40px;
+
+    border:
+      1px solid #d8e2ef;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #15385f;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .search-box input:focus,
+  .quotation-search input:focus {
+    border-color: #ff8216;
+
+    box-shadow:
+      0 0 0 3px
+      rgba(255, 130, 22, 0.1);
+  }
+
+
+  /* =======================================================
+     MOBILE QUOTATION CARDS
+     ======================================================= */
+
+  .quotation-mobile-card {
+    position: relative;
+
+    width: 100%;
+
+    margin-bottom: 10px;
+
+    padding: 13px;
+
+    border:
+      1px solid #dfe7f1;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    overflow: hidden;
+  }
+
+  .quotation-mobile-card:last-child {
+    margin-bottom: 0;
+  }
+
+  .quotation-mobile-card::before {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 3px;
+
+    background: #ff8216;
+  }
+
+  .mobile-card-field {
+    padding: 8px 0;
+
+    border-bottom:
+      1px solid #edf1f6;
+  }
+
+  .mobile-card-field:first-child {
+    padding-top: 0;
+  }
+
+  .mobile-card-field:last-child {
+    border-bottom: 0;
+  }
+
+  .mobile-card-field label {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #71849d;
+
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .mobile-card-field strong,
+  .mobile-card-field span {
+    color: #102b50;
+
+    font-size: 13px;
+    line-height: 1.3;
+
+    overflow-wrap: anywhere;
+  }
+
+
+  /* =======================================================
+     MOBILE ACTION BUTTONS
+     ======================================================= */
+
+  .mobile-card-actions,
+  .quotation-actions {
+    width: 100%;
+
+    margin-top: 11px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+  }
+
+  .mobile-card-actions button,
+  .quotation-actions button,
+  .action-btn {
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 8px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+  }
+
+  .mobile-card-actions button svg,
+  .quotation-actions button svg,
+  .action-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+
+  /* =======================================================
+     HIDE DESKTOP TABLE ON MOBILE
+     ======================================================= */
+
+  .desktop-table-wrapper,
+  .quotation-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+}
+
+
+/* =========================================================
+   STANDARD PHONE
+   381px - 480px
+   ========================================================= */
+
+@media screen and (min-width: 381px) and (max-width: 480px) {
+
+  .sidebar {
+    width: 220px !important;
+    max-width: 70vw !important;
+  }
+
+  .dashboard-page {
+    padding:
+      12px 10px
+      22px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 21px;
+  }
+
+  .quotation-history,
+  .history-section,
+  .recent-quotations {
+    padding: 12px 10px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL PHONE
+   341px - 380px
+   ========================================================= */
+
+@media screen and (min-width: 341px) and (max-width: 380px) {
+
+  .sidebar {
+    width: 205px !important;
+    max-width: 72vw !important;
+  }
+
+  .sidebar .brand {
+    gap: 7px;
+  }
+
+  .sidebar .brand-icon {
+    width: 33px;
+    height: 33px;
+
+    flex-basis: 33px;
+  }
+
+  .sidebar .brand h2 {
+    font-size: 13px;
+  }
+
+  .nav-link {
+    min-height: 38px;
+
+    padding: 0 8px;
+
+    font-size: 12px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONE
+   <= 340px
+   ========================================================= */
+
+@media screen and (max-width: 340px) {
+
+  .sidebar {
+    width: 195px !important;
+    max-width: 74vw !important;
+  }
+
+  .sidebar .brand-icon {
+    width: 31px;
+    height: 31px;
+
+    flex-basis: 31px;
+  }
+
+  .sidebar .brand h2 {
+    font-size: 12px;
+  }
+
+  .sidebar .brand p {
+    font-size: 7px;
+  }
+
+  .nav-link {
+    min-height: 37px;
+
+    padding: 0 7px;
+
+    gap: 7px;
+
+    font-size: 11px;
+  }
+
+  .dashboard-page {
+    padding: 10px 7px 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 19px;
+  }
+
+  .dashboard-header p {
+    font-size: 11px;
+  }
+
+  .stat-card {
+    min-height: 80px;
+
+    padding: 11px 12px;
+  }
+
+  .quotation-history,
+  .history-section,
+  .recent-quotations {
+    padding: 11px 8px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (min-width: 651px) and (max-width: 850px) {
+
+  .sidebar {
+    width: 235px !important;
+    max-width: 45vw !important;
+  }
+
+  .dashboard-page {
+    padding: 20px;
+  }
+
+  .dashboard-header {
+    grid-template-columns:
+      minmax(0, 1fr)
+      auto;
+
+    align-items: center;
+  }
+
+  .dashboard-header .primary-btn,
+  .dashboard-new-btn,
+  .new-quotation-btn {
+    width: auto;
+    min-width: 160px;
+  }
+
+  .stats-grid,
+  .dashboard-stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+/* =========================================================
+   DESKTOP DASHBOARD ENHANCEMENT
+   ========================================================= */
+
+@media screen and (min-width: 851px) {
+
+  .dashboard-page {
+    width: 100%;
+
+    padding: 30px 32px 40px;
+  }
+
+  .dashboard-header {
+    width: 100%;
+
+    margin-bottom: 25px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+  }
+
+  .dashboard-header h1 {
+    margin: 0;
+
+    color: #102b50;
+
+    font-size: 31px;
+    line-height: 1.1;
+
+    letter-spacing: -0.7px;
+  }
+
+  .dashboard-header p {
+    margin: 6px 0 0;
+
+    color: #617995;
+
+    font-size: 15px;
+  }
+
+  .stats-grid,
+  .dashboard-stats {
+    margin-bottom: 25px;
+
+    display: grid;
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(230px, 310px)
+      );
+
+    gap: 18px;
+  }
+
+  .stat-card {
+    min-height: 105px;
+
+    padding: 20px;
+
+    border:
+      1px solid rgba(22, 59, 108, 0.05);
+
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 8px 30px
+      rgba(21, 56, 95, 0.06);
+
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 12px 35px
+      rgba(21, 56, 95, 0.09);
+  }
+
+  .quotation-history,
+  .history-section,
+  .recent-quotations {
+    padding: 22px;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+      0 8px 30px
+      rgba(21, 56, 95, 0.055);
+  }
+
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+  .mobile-header,
+  .sidebar,
+  .sidebar-overlay {
+    display: none !important;
+  }
+
+  .main-content {
+    width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+}
+/* =========================================================
+   INTERACTIVE QUOTATION PREVIEW
+   ADVANCED RESPONSIVE DRAG + ZOOM SYSTEM
+   ========================================================= */
+
+.interactive-quotation-preview {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 14px;
+
+  background: #eaf1f8;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PREVIEW TOOLBAR
+   ========================================================= */
+
+.quotation-preview-toolbar {
+  position: relative;
+  z-index: 20;
+
+  width: 100%;
+  min-height: 58px;
+
+  padding: 9px 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  border-bottom: 1px solid #d8e3ef;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 3px 14px
+    rgba(20, 54, 91, 0.07);
+}
+
+
+/* =========================================================
+   TOOLBAR INFORMATION
+   ========================================================= */
+
+.preview-toolbar-info {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.preview-toolbar-icon {
+  width: 35px;
+  height: 35px;
+
+  flex: 0 0 35px;
+
+  border-radius: 9px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e8f1fc;
+  color: #16477f;
+}
+
+.preview-toolbar-info > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-toolbar-info strong {
+  color: #102f56;
+
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.preview-toolbar-info span {
+  margin-top: 2px;
+
+  color: #71849c;
+
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   TOOLBAR CONTROLS
+   ========================================================= */
+
+.preview-toolbar-controls {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.preview-tool-btn,
+.preview-zoom-value {
+  height: 34px;
+
+  border: 1px solid #d8e3ef;
+  border-radius: 8px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  color: #173e6d;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.preview-tool-btn {
+  width: 34px;
+  padding: 0;
+}
+
+.preview-zoom-value {
+  min-width: 55px;
+
+  padding: 0 9px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.preview-tool-btn:hover:not(:disabled),
+.preview-zoom-value:hover {
+  border-color: #ff8216;
+
+  background: #fff5eb;
+  color: #e86f08;
+
+  box-shadow:
+    0 3px 10px
+    rgba(255, 130, 22, 0.12);
+}
+
+.preview-tool-btn:active:not(:disabled),
+.preview-zoom-value:active {
+  transform: scale(0.93);
+}
+
+.preview-tool-btn.active {
+  border-color: #ff8216;
+
+  background: #ff8216;
+  color: #ffffff;
+}
+
+.preview-tool-btn:disabled {
+  opacity: 0.35;
+
+  cursor: not-allowed;
+}
+
+.preview-toolbar-divider {
+  width: 1px;
+  height: 24px;
+
+  margin: 0 3px;
+
+  background: #dce5ef;
+}
+
+
+/* =========================================================
+   DRAGGABLE VIEWPORT
+   ========================================================= */
+
+.quotation-preview-viewport {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+
+  min-height: 500px;
+
+  overflow: auto;
+
+  cursor: grab;
+
+  touch-action: pan-x pan-y;
+
+  overscroll-behavior: contain;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    #9eb1c6
+    transparent;
+
+  user-select: none;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.quotation-preview-viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.quotation-preview-viewport::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+.quotation-preview-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.quotation-preview-viewport::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+
+  background: #9eb1c6;
+  background-clip: padding-box;
+}
+
+
+/* =========================================================
+   PAPER STAGE
+   ========================================================= */
+
+.quotation-preview-stage {
+  width: max-content;
+  min-width: 100%;
+
+  min-height: 100%;
+
+  padding: 18px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.scaled-paper-space {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  transition:
+    width 0.2s ease,
+    height 0.2s ease;
+}
+
+.scaled-paper-space .a4-page {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 210mm;
+  min-width: 210mm;
+
+  height: 297mm;
+  min-height: 297mm;
+
+  transition:
+    transform 0.2s ease;
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   PREVENT IMAGE DRAG GHOST
+   ========================================================= */
+
+.quotation-preview-viewport img {
+  pointer-events: none;
+
+  -webkit-user-drag: none;
+
+  user-select: none;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media screen and (min-width: 1400px) {
+
+  .quotation-preview-viewport {
+    min-height: calc(100vh - 190px);
+  }
+
+  .quotation-preview-stage {
+    padding: 22px;
+  }
+
+}
+
+
+/* =========================================================
+   NORMAL DESKTOP / LAPTOP
+   ========================================================= */
+
+@media screen and (min-width: 851px) and (max-width: 1399px) {
+
+  .quotation-preview-toolbar {
+    min-height: 54px;
+
+    padding: 8px 10px;
+  }
+
+  .preview-toolbar-info span {
+    display: none;
+  }
+
+  .quotation-preview-viewport {
+    min-height: calc(100vh - 180px);
+  }
+
+  .quotation-preview-stage {
+    padding: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media screen and (min-width: 601px) and (max-width: 850px) {
+
+  .interactive-quotation-preview {
+    min-height: 620px;
+
+    border-radius: 12px;
+  }
+
+  .quotation-preview-toolbar {
+    min-height: 52px;
+
+    padding: 7px 9px;
+  }
+
+  .preview-toolbar-info span {
+    display: none;
+  }
+
+  .preview-toolbar-icon {
+    width: 32px;
+    height: 32px;
+
+    flex-basis: 32px;
+  }
+
+  .preview-tool-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .preview-zoom-value {
+    height: 32px;
+    min-width: 50px;
+  }
+
+  .quotation-preview-viewport {
+    min-height: 550px;
+  }
+
+  .quotation-preview-stage {
+    padding: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .interactive-quotation-preview {
+    width: 100%;
+
+    min-height: 560px;
+
+    border-radius: 10px;
+  }
+
+  .quotation-preview-toolbar {
+    min-height: auto;
+
+    padding: 7px;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 7px;
+  }
+
+
+  /*
+   * Top information row
+   */
+
+  .preview-toolbar-info {
+    display: none;
+  }
+
+
+  /*
+   * Controls use full available width.
+   */
+
+  .preview-toolbar-controls {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      34px
+      minmax(48px, 1fr)
+      34px
+      1px
+      34px
+      34px
+      34px;
+
+    justify-content: center;
+
+    gap: 4px;
+  }
+
+  .preview-tool-btn {
+    width: 34px;
+    height: 32px;
+
+    border-radius: 7px;
+  }
+
+  .preview-zoom-value {
+    width: 100%;
+    min-width: 0;
+    height: 32px;
+
+    padding: 0 5px;
+
+    border-radius: 7px;
+
+    font-size: 10px;
+  }
+
+  .preview-toolbar-divider {
+    width: 1px;
+    height: 23px;
+
+    margin: auto 0;
+  }
+
+
+  /*
+   * Viewport
+   */
+
+  .quotation-preview-viewport {
+    min-height: 500px;
+    max-height: 72vh;
+  }
+
+  .quotation-preview-stage {
+    padding: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+
+  .quotation-preview-toolbar {
+    padding: 5px;
+  }
+
+  .preview-toolbar-controls {
+    grid-template-columns:
+      31px
+      minmax(43px, 1fr)
+      31px
+      1px
+      31px
+      31px
+      31px;
+
+    gap: 3px;
+  }
+
+  .preview-tool-btn {
+    width: 31px;
+    height: 30px;
+  }
+
+  .preview-tool-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .preview-zoom-value {
+    height: 30px;
+
+    font-size: 9px;
+  }
+
+  .quotation-preview-stage {
+    padding: 6px;
+  }
+
+}
+
+
+/* =========================================================
+   PRINT MODE
+   IMPORTANT:
+   Remove all zoom/drag transformations before printing.
+   ========================================================= */
+
+@media print {
+
+  .interactive-quotation-preview {
+    display: block !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    background: transparent !important;
+
+    border: none !important;
+    border-radius: 0 !important;
+
+    overflow: visible !important;
+  }
+
+  .quotation-preview-toolbar {
+    display: none !important;
+  }
+
+  .quotation-preview-viewport {
+    display: block !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    min-height: 0 !important;
+    max-height: none !important;
+
+    overflow: visible !important;
+
+    cursor: default !important;
+
+    user-select: auto !important;
+  }
+
+  .quotation-preview-stage {
+    display: block !important;
+
+    width: auto !important;
+    min-width: 0 !important;
+
+    min-height: 0 !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .scaled-paper-space {
+    width: 210mm !important;
+    height: 297mm !important;
+
+    margin: 0 !important;
+  }
+
+  .scaled-paper-space .a4-page {
+    position: relative !important;
+
+    top: auto !important;
+    left: auto !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+
+    height: 297mm !important;
+    min-height: 297mm !important;
+
+    transform: none !important;
+
+    transition: none !important;
+  }
+
+}
+/* =========================================================
+   ADVANCED RESPONSIVE DASHBOARD
+   AL FALAH COAL TRADER
+   ========================================================= */
+
+.dashboard-page {
+  width: 100%;
+  min-width: 0;
+
+  padding: 26px;
+
+  background: #edf4fa;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+  width: 100%;
+
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.dashboard-heading {
+  min-width: 0;
+}
+
+.dashboard-heading h1 {
+  margin: 0;
+
+  color: #102f56;
+
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 800;
+  line-height: 1.1;
+
+  letter-spacing: -0.8px;
+}
+
+.dashboard-heading p {
+  margin: 7px 0 0;
+
+  color: #627892;
+
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.dashboard-new-btn {
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(220px, 300px)
+    );
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  min-height: 105px;
+
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  border: 1px solid #e1eaf3;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 24px
+    rgba(20, 54, 91, 0.06);
+}
+
+.stat-icon {
+  width: 54px;
+  height: 54px;
+
+  flex: 0 0 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background: #fff0e4;
+  color: #ff7d12;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.stat-content span {
+  color: #6a7f98;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.stat-content strong {
+  color: #102f56;
+
+  font-size: 26px;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   QUOTATION LIST CARD
+   ========================================================= */
+
+.quotation-list-card {
+  width: 100%;
+
+  padding: 20px;
+
+  border: 1px solid #e1eaf3;
+  border-radius: 17px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 10px 30px
+    rgba(20, 54, 91, 0.06);
+}
+
+.list-header {
+  margin-bottom: 18px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.list-heading {
+  min-width: 0;
+}
+
+.list-heading h2 {
+  margin: 0;
+
+  color: #102f56;
+
+  font-size: 21px;
+  line-height: 1.2;
+}
+
+.list-heading p {
+  margin: 5px 0 0;
+
+  color: #6d8199;
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-box {
+  position: relative;
+
+  width: min(100%, 340px);
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #d8e3ef;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+  border-color: #ff8216;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(255, 130, 22, 0.1);
+}
+
+.search-box > svg {
+  margin-left: 13px;
+
+  flex-shrink: 0;
+
+  color: #61768f;
+}
+
+.search-box input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 38px 0 10px;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #102f56;
+
+  font-size: 14px;
+}
+
+.clear-search-btn {
+  position: absolute;
+
+  top: 50%;
+  right: 7px;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #edf3f8;
+  color: #61768f;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+
+/* =========================================================
+   DESKTOP TABLE
+   ========================================================= */
+
+.desktop-quotation-table {
+  display: block;
+}
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  width: 100%;
+
+  border-collapse: collapse;
+}
+
+.table-wrapper th {
+  padding: 13px 14px;
+
+  border-bottom: 1px solid #dce6f0;
+
+  background: #f6f9fc;
+
+  color: #61768f;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-align: left;
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+.table-wrapper td {
+  padding: 14px;
+
+  border-bottom: 1px solid #edf2f7;
+
+  color: #233e5e;
+
+  font-size: 13px;
+}
+
+.table-wrapper tbody tr {
+  transition: background 0.2s ease;
+}
+
+.table-wrapper tbody tr:hover {
+  background: #f9fbfd;
+}
+
+.quotation-number {
+  color: #103f78;
+}
+
+.table-company-name,
+.table-subject {
+  display: block;
+
+  max-width: 250px;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.table-rate {
+  color: #d9690b;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DESKTOP ACTION BUTTONS
+   ========================================================= */
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.action-btn {
+  width: 31px;
+  height: 31px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #edf4fb;
+  color: #28639f;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.action-btn.edit {
+  background: #eaf3ff;
+  color: #1670d2;
+}
+
+.action-btn.print {
+  background: #eef1ff;
+  color: #5559c7;
+}
+
+.action-btn.duplicate {
+  background: #eef9f2;
+  color: #228653;
+}
+
+.action-btn.delete {
+  background: #fff0f2;
+  color: #dc3545;
+}
+
+
+/* =========================================================
+   MOBILE LIST
+   ========================================================= */
+
+.mobile-quotation-list {
+  display: none;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-quotation-state {
+  min-height: 280px;
+
+  padding: 35px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 70px;
+  height: 70px;
+
+  margin-bottom: 14px;
+
+  border-radius: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #fff0e4;
+  color: #ff7d12;
+}
+
+.empty-quotation-state h3 {
+  margin: 0;
+
+  color: #102f56;
+
+  font-size: 18px;
+}
+
+.empty-quotation-state p {
+  margin: 6px 0 0;
+
+  color: #73869c;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   TABLET AND MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 900px) {
+
+  .desktop-quotation-table {
+    display: none;
+  }
+
+  .mobile-quotation-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media screen and (max-width: 600px) {
+
+  .dashboard-page {
+    padding: 12px;
+  }
+
+
+  /* PAGE HEADER */
+
+  .page-header {
+    margin-bottom: 12px;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 12px;
+  }
+
+  .dashboard-heading h1 {
+    font-size: 23px;
+    letter-spacing: -0.4px;
+  }
+
+  .dashboard-heading p {
+    margin-top: 4px;
+
+    max-width: 310px;
+
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .dashboard-new-btn {
+    width: 100%;
+    min-height: 42px;
+
+    border-radius: 9px;
+
+    justify-content: center;
+  }
+
+
+  /* STAT */
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+
+    margin-bottom: 12px;
+  }
+
+  .stat-card {
+    min-height: 76px;
+
+    padding: 13px 15px;
+
+    border-radius: 12px;
+
+    gap: 12px;
+  }
+
+  .stat-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-basis: 43px;
+
+    border-radius: 10px;
+  }
+
+  .stat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stat-content span {
+    font-size: 12px;
+  }
+
+  .stat-content strong {
+    font-size: 22px;
+  }
+
+
+  /* LIST CONTAINER */
+
+  .quotation-list-card {
+    padding: 11px;
+
+    border-radius: 13px;
+  }
+
+  .list-header {
+    margin-bottom: 11px;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 10px;
+  }
+
+  .list-heading h2 {
+    font-size: 18px;
+  }
+
+  .list-heading p {
+    margin-top: 3px;
+
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+
+  /* SEARCH */
+
+  .search-box {
+    width: 100%;
+    height: 40px;
+
+    border-radius: 8px;
+  }
+
+  .search-box > svg {
+    width: 16px;
+    height: 16px;
+
+    margin-left: 11px;
+  }
+
+  .search-box input {
+    padding-left: 8px;
+
+    font-size: 12px;
+  }
+
+
+  /* MOBILE QUOTATION CARD */
+
+  .mobile-quotation-list {
+    gap: 8px;
+  }
+
+  .mobile-quotation-card {
+    position: relative;
+
+    width: 100%;
+
+    padding: 11px;
+
+    border: 1px solid #dce6f0;
+    border-radius: 11px;
+
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #fbfdff 100%
+      );
+
+    box-shadow:
+      0 4px 14px
+      rgba(20, 54, 91, 0.045);
+
+    overflow: hidden;
+  }
+
+  .mobile-quotation-card::before {
+    content: '';
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #ff8216;
+  }
+
+
+  /* CARD TOP */
+
+  .mobile-card-top {
+    padding-bottom: 9px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 8px;
+
+    border-bottom: 1px solid #edf2f7;
+  }
+
+  .mobile-quotation-identity {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+  }
+
+  .mobile-list-index {
+    width: 29px;
+    height: 29px;
+
+    flex: 0 0 29px;
+
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff0e4;
+    color: #ed720d;
+
+    font-size: 10px;
+    font-weight: 800;
+  }
+
+  .mobile-quotation-identity > div {
+    min-width: 0;
+  }
+
+  .mobile-small-label {
+    display: block;
+
+    margin-bottom: 1px;
+
+    color: #7890a9;
+
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .mobile-quotation-number {
+    display: block;
+
+    color: #103d72;
+
+    font-size: 14px;
+    line-height: 1.25;
+
+    white-space: nowrap;
+  }
+
+  .mobile-rate-badge {
+    max-width: 115px;
+
+    flex-shrink: 0;
+
+    padding: 5px 7px;
+
+    border-radius: 7px;
+
+    background: #fff2e6;
+    color: #dc6c0d;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+
+  /* INFORMATION GRID */
+
+  .mobile-quotation-info-grid {
+    padding: 9px 0;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 8px 10px;
+  }
+
+  .mobile-info-item {
+    min-width: 0;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 6px;
+  }
+
+  .mobile-info-item > svg {
+    width: 13px;
+    height: 13px;
+
+    flex: 0 0 13px;
+
+    margin-top: 2px;
+
+    color: #6f89a4;
+  }
+
+  .mobile-info-item > div {
+    min-width: 0;
+  }
+
+  .mobile-info-item span {
+    display: block;
+
+    margin-bottom: 1px;
+
+    color: #8195aa;
+
+    font-size: 8px;
+    line-height: 1.2;
+  }
+
+  .mobile-info-item strong {
+    display: block;
+
+    color: #173858;
+
+    font-size: 10px;
+    line-height: 1.3;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-subject-item {
+    grid-column: 1 / -1;
+  }
+
+  .mobile-subject-item strong {
+    white-space: nowrap;
+  }
+
+  .mobile-price-item {
+    display: none;
+  }
+
+
+  /* MOBILE ACTIONS */
+
+  .mobile-card-actions {
+    padding-top: 8px;
+
+    border-top: 1px solid #edf2f7;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+
+    gap: 4px;
+  }
+
+  .mobile-action-btn {
+    min-width: 0;
+    height: 30px;
+
+    padding: 0 3px;
+
+    border: none;
+    border-radius: 6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    background: #edf4fb;
+    color: #28639f;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    cursor: pointer;
+  }
+
+  .mobile-action-btn svg {
+    width: 12px;
+    height: 12px;
+
+    flex-shrink: 0;
+  }
+
+  .mobile-action-btn.edit {
+    background: #eaf3ff;
+    color: #176dc5;
+  }
+
+  .mobile-action-btn.print {
+    background: #eef0ff;
+    color: #5359bd;
+  }
+
+  .mobile-action-btn.duplicate {
+    background: #edf8f1;
+    color: #218352;
+  }
+
+  .mobile-action-btn.delete {
+    background: #fff0f2;
+    color: #d93648;
+  }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+   320px - 380px
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+
+  .dashboard-page {
+    padding: 9px;
+  }
+
+  .quotation-list-card {
+    padding: 9px;
+  }
+
+  .mobile-quotation-card {
+    padding: 9px;
+  }
+
+  .mobile-card-top {
+    gap: 5px;
+  }
+
+  .mobile-list-index {
+    width: 26px;
+    height: 26px;
+
+    flex-basis: 26px;
+  }
+
+  .mobile-quotation-number {
+    font-size: 12px;
+  }
+
+  .mobile-rate-badge {
+    max-width: 95px;
+
+    padding: 4px 5px;
+
+    font-size: 8px;
+  }
+
+  .mobile-quotation-info-grid {
+    gap: 7px;
+  }
+
+  .mobile-action-btn {
+    height: 29px;
+  }
+
+  .mobile-action-btn span {
+    display: none;
+  }
+
+  .mobile-action-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 340px) {
+
+  .mobile-rate-badge {
+    display: none;
+  }
+
+  .mobile-quotation-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mobile-subject-item {
+    grid-column: auto;
+  }
+
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+
+  .dashboard-page,
+  .quotation-list-card,
+  .stats-grid,
+  .page-header {
+    display: none !important;
+  }
+
+}
+/* =========================================================
+   FINAL MOBILE QUOTATION ACTION BUTTON FIX
+   IMPORTANT: KEEP THIS BLOCK AT THE VERY END OF index.css
+   ========================================================= */
+
+@media screen and (max-width: 850px) {
+
+  /* =========================================
+     ACTION BUTTON CONTAINER
+     ========================================= */
+
+  .mobile-card-actions {
+    width: 100% !important;
+
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+
+    border-top: 1px solid #edf2f7 !important;
+
+    display: flex !important;
+    flex-wrap: nowrap !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    gap: 5px !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =========================================
+     ALL MOBILE ACTION BUTTONS
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+
+    height: 34px !important;
+    min-height: 34px !important;
+
+    flex: 1 1 0 !important;
+
+    padding: 0 5px !important;
+
+    border: 1px solid transparent !important;
+    border-radius: 8px !important;
+
+    display: inline-flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 3px !important;
+
+    font-family: inherit !important;
+
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+
+    overflow: hidden !important;
+
+    transition:
+      transform 0.18s ease,
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      box-shadow 0.18s ease !important;
+  }
+
+
+  /* =========================================
+     BUTTON ICONS
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+
+    min-width: 13px !important;
+    min-height: 13px !important;
+
+    max-width: 13px !important;
+    max-height: 13px !important;
+
+    flex: 0 0 13px !important;
+
+    stroke-width: 2 !important;
+  }
+
+
+  /* =========================================
+     BUTTON TEXT
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn span {
+    display: inline-block !important;
+
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+  }
+
+
+  /* =========================================
+     VIEW BUTTON
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn.view {
+    background: #edf6ff !important;
+    border-color: #d9ebfc !important;
+    color: #1769b0 !important;
+  }
+
+
+  /* =========================================
+     EDIT BUTTON
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn.edit {
+    background: #edf5ff !important;
+    border-color: #d9e9fb !important;
+    color: #1268c4 !important;
+  }
+
+
+  /* =========================================
+     PRINT BUTTON
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn.print {
+    background: #f1f0ff !important;
+    border-color: #e1dfff !important;
+    color: #5752c7 !important;
+  }
+
+
+  /* =========================================
+     COPY BUTTON
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn.duplicate {
+    background: #edf9f2 !important;
+    border-color: #d8f0e1 !important;
+    color: #17804b !important;
+  }
+
+
+  /* =========================================
+     DELETE BUTTON
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn.delete {
+    background: #fff0f2 !important;
+    border-color: #fbdde1 !important;
+    color: #dc3045 !important;
+  }
+
+
+  /* =========================================
+     TOUCH EFFECT
+     ========================================= */
+
+  .mobile-card-actions .mobile-action-btn:active {
+    transform: scale(0.95) !important;
+  }
+}
+
+
+/* =========================================================
+   STANDARD MOBILE
+   Optimized for your 406px screenshot
+   ========================================================= */
+
+@media screen and (max-width: 430px) {
+
+  .mobile-card-actions {
+    gap: 4px !important;
+  }
+
+  .mobile-card-actions .mobile-action-btn {
+    height: 33px !important;
+    min-height: 33px !important;
+
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+
+    gap: 3px !important;
+
+    font-size: 9.5px !important;
+
+    border-radius: 7px !important;
+  }
+
+  .mobile-card-actions .mobile-action-btn svg {
+    width: 12px !important;
+    height: 12px !important;
+
+    min-width: 12px !important;
+    min-height: 12px !important;
+
+    max-width: 12px !important;
+    max-height: 12px !important;
+
+    flex-basis: 12px !important;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   380px and below
+   ========================================================= */
+
+@media screen and (max-width: 380px) {
+
+  .mobile-card-actions {
+    gap: 3px !important;
+  }
+
+  .mobile-card-actions .mobile-action-btn {
+    height: 32px !important;
+    min-height: 32px !important;
+
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+
+    gap: 2px !important;
+
+    font-size: 8.5px !important;
+  }
+
+  .mobile-card-actions .mobile-action-btn svg {
+    width: 11px !important;
+    height: 11px !important;
+
+    min-width: 11px !important;
+    min-height: 11px !important;
+
+    max-width: 11px !important;
+    max-height: 11px !important;
+
+    flex-basis: 11px !important;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL MOBILE
+   Below 340px: icons only
+   ========================================================= */
+
+@media screen and (max-width: 340px) {
+
+  .mobile-card-actions .mobile-action-btn {
+    height: 32px !important;
+
+    padding: 0 !important;
+
+    flex: 1 1 0 !important;
+  }
+
+  .mobile-card-actions .mobile-action-btn span {
+    display: none !important;
+  }
+
+  .mobile-card-actions .mobile-action-btn svg {
+    width: 15px !important;
+    height: 15px !important;
+
+    min-width: 15px !important;
+    min-height: 15px !important;
+
+    max-width: 15px !important;
+    max-height: 15px !important;
+
+    flex-basis: 15px !important;
+  }
+}
+
+/* =========================================================
+   FINAL PRINT FIX
+   Single quotation = single A4 page
+   Extra page only when real additional content exists
+   IMPORTANT: Keep this block at the VERY END of index.css
+   ========================================================= */
+
+@media print {
+
+  /* -----------------------------------------
+     PAGE SETUP
+     ----------------------------------------- */
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+
+  /* -----------------------------------------
+     ROOT DOCUMENT
+     ----------------------------------------- */
+
+  html,
+  body {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+
+    overflow: visible !important;
+  }
+
+  #root {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #ffffff !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* -----------------------------------------
+     HIDE NON-PRINT ELEMENTS
+     ----------------------------------------- */
+
+  .no-print,
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+
+  /* -----------------------------------------
+     REMOVE APP LAYOUT DIMENSIONS
+     ----------------------------------------- */
+
+  .app-shell,
+  .main-content,
+  .create-page {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+
+  /* -----------------------------------------
+     PRINT WORKSPACE
+     CRITICAL: Remove grid/flex gaps
+     ----------------------------------------- */
+
+  .quotation-workspace {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    gap: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+
+  /* -----------------------------------------
+     PREVIEW WRAPPERS
+     CRITICAL: No transformed leftover height
+     ----------------------------------------- */
+
+  .preview-panel,
+  .preview-scale-container {
+    display: block !important;
+
+    position: static !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+
+  /* -----------------------------------------
+     ACTUAL A4 QUOTATION PAGE
+     ----------------------------------------- */
+
+  .a4-page {
+    position: relative !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff !important;
+
+    box-shadow: none !important;
+
+    /*
+      IMPORTANT:
+      Do NOT force a new blank page after this page.
+    */
+    break-after: auto !important;
+    page-break-after: auto !important;
+
+    break-before: auto !important;
+    page-break-before: auto !important;
+  }
+
+
+  /* -----------------------------------------
+     IF MULTIPLE REAL A4 PAGES EXIST
+     Only non-last pages create page break
+     ----------------------------------------- */
+
+  .a4-page:not(:last-child) {
+    break-after: page !important;
+    page-break-after: always !important;
+  }
+
+  .a4-page:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+
+
+  /* -----------------------------------------
+     LETTERHEAD BACKGROUND
+     ----------------------------------------- */
+
+  .letterhead-background {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill !important;
+
+    pointer-events: none !important;
+  }
+
+
+  /* -----------------------------------------
+     QUOTATION DOCUMENT CONTENT
+     ----------------------------------------- */
+
+  .quotation-document {
+    position: relative !important;
+    z-index: 1 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* -----------------------------------------
+     PREVENT CONTENT BLOCKS FROM BREAKING
+     ----------------------------------------- */
+
+  .quotation-item-section,
+  .reference-specifications,
+  .reference-term-row,
+  .reference-signature {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+
+  /* -----------------------------------------
+     EXACT PRINT COLORS
+     ----------------------------------------- */
+
+  body,
+  .a4-page,
+  .letterhead-background {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* =========================================================
+   FINAL EXACT PRINT FIX
+   AL FALAH COAL TRADER
+   One A4 quotation = exactly one printed page
+   Extra page only when actual separate .a4-page exists
+   ========================================================= */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  /* =======================================================
+     1. RESET EVERYTHING THAT CAN CREATE EXTRA HEIGHT
+     ======================================================= */
+
+  html {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  body {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #root {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+
+  /* =======================================================
+     2. HIDE ALL NON-PRINT UI
+     ======================================================= */
+
+  .no-print,
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+
+  /* =======================================================
+     3. REMOVE APP LAYOUT HEIGHT / GRID / FLEX EFFECTS
+     ======================================================= */
+
+  .app-shell,
+  .main-content,
+  .create-page,
+  .quotation-workspace,
+  .preview-panel,
+  .preview-scale-container {
+    display: block !important;
+
+    position: static !important;
+
+    width: 210mm !important;
+    min-width: 0 !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    gap: 0 !important;
+
+    overflow: visible !important;
+
+    transform: none !important;
+
+    background: transparent !important;
+  }
+
+
+  /* =======================================================
+     4. ACTUAL PRINT PAGE
+     
+     IMPORTANT:
+     Use 296.8mm instead of exact 297mm.
+     
+     This prevents Chrome sub-pixel rounding from creating
+     an empty second page.
+     ======================================================= */
+
+  .a4-page {
+    position: relative !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 296.8mm !important;
+    min-height: 296.8mm !important;
+    max-height: 296.8mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+
+    box-shadow: none !important;
+
+    background: #ffffff !important;
+
+    break-before: auto !important;
+    page-break-before: auto !important;
+
+    break-after: auto !important;
+    page-break-after: auto !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+
+  /* =======================================================
+     5. ONLY CREATE PAGE BREAK BETWEEN REAL A4 PAGES
+     ======================================================= */
+
+  .a4-page + .a4-page {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+
+  /* =======================================================
+     6. LETTERHEAD
+     Slightly below 297mm to prevent overflow
+     ======================================================= */
+
+  .letterhead-background {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+
+    z-index: 0 !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    height: 296.8mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    object-fit: fill !important;
+
+    pointer-events: none !important;
+  }
+
+
+  /* =======================================================
+     7. DOCUMENT CONTENT
+     ======================================================= */
+
+  .quotation-document {
+    position: relative !important;
+
+    z-index: 1 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    overflow: hidden !important;
+  }
+
+
+  /* =======================================================
+     8. PREVENT IMPORTANT SECTIONS FROM SPLITTING
+     ======================================================= */
+
+  .quotation-item-section,
+  .reference-specifications,
+  .reference-term-row,
+  .reference-signature {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+
+  /* =======================================================
+     9. EXACT PRINT COLORS
+     ======================================================= */
+
+  .a4-page,
+  .letterhead-background,
+  .quotation-document {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* =========================================================
+   FINAL PRINT / PDF DOUBLE-PAGE FIX
+   Keeps all existing CSS intact
+   Fixes unnecessary blank second page in Chrome Print Preview
+   ========================================================= */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #root {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .app-shell,
+  .main-content,
+  .create-page,
+  .quotation-workspace,
+  .preview-panel,
+  .preview-scale-container {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    transform: none !important;
+
+    background: #ffffff !important;
+  }
+
+  .no-print,
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+  .a4-page {
+    position: relative !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    /*
+      Slightly below 297mm prevents Chrome rounding
+      from creating an unnecessary blank second page.
+    */
+    height: 296.5mm !important;
+    min-height: 296.5mm !important;
+    max-height: 296.5mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+    transform-origin: initial !important;
+
+    box-shadow: none !important;
+
+    break-before: auto !important;
+    page-break-before: auto !important;
+
+    break-after: auto !important;
+    page-break-after: auto !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .a4-page + .a4-page {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  .a4-page:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+
+  .letterhead-background {
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    height: 296.5mm !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill !important;
+
+    transform: none !important;
+  }
+
+  .quotation-document {
+    position: relative !important;
+
+    z-index: 1 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+  }
+
+  .quotation-item-section,
+  .reference-specifications,
+  .reference-term-row,
+  .reference-signature {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+/* =========================================================
+   FINAL CHROME PRINT DOUBLE PAGE FIX
+   AL FALAH COAL TRADER
+   IMPORTANT: KEEP THIS AT THE ABSOLUTE END OF index.css
+   ========================================================= */
+
+@media print {
+
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  html {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  body {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #root {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  .app-shell {
+    display: block !important;
+
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  .main-content {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    margin-left: 0 !important;
+
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  .create-page {
+    display: block !important;
+
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  .quotation-workspace {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  .preview-panel {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  .preview-scale-container {
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    transform: none !important;
+  }
+
+  /*
+   * Hide everything that must not print.
+   */
+  .no-print,
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+  /*
+   * CRITICAL FIX:
+   * Use slightly smaller than full 297mm height.
+   * This prevents Chrome rounding overflow.
+   */
+  .a4-page {
+    position: relative !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 296mm !important;
+    min-height: 296mm !important;
+    max-height: 296mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+    transform-origin: initial !important;
+
+    box-shadow: none !important;
+
+    break-before: auto !important;
+    page-break-before: auto !important;
+
+    break-after: auto !important;
+    page-break-after: auto !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /*
+   * If there are genuinely multiple A4 pages,
+   * only pages after the first start on a new sheet.
+   */
+  .a4-page + .a4-page {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+
+  /*
+   * Absolutely prevent blank page after final A4 page.
+   */
+  .a4-page:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+
+  /*
+   * Background must fit inside the reduced printable page.
+   */
+  .letterhead-background {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    left: 0 !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 296mm !important;
+    min-height: 296mm !important;
+    max-height: 296mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill !important;
+
+    transform: none !important;
+
+    pointer-events: none !important;
+  }
+
+  .quotation-document {
+    position: relative !important;
+    z-index: 1 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+  }
+
+  .quotation-item-section,
+  .reference-specifications,
+  .reference-term-row,
+  .reference-signature {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+/* =========================================================
+   AL FALAH COAL TRADER
+   FINAL PRINT FIX
+   SINGLE A4 PAGE / NO BLANK SECOND PAGE
+   ========================================================= */
+
+@media print {
+
+  /* ---------------------------------------------------------
+     EXACT A4 PAGE SETTINGS
+     --------------------------------------------------------- */
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  /* ---------------------------------------------------------
+     RESET COMPLETE DOCUMENT
+     --------------------------------------------------------- */
+
+  html {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  body {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #root {
+    width: 210mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+  }
+
+  /* ---------------------------------------------------------
+     HIDE EVERYTHING NOT REQUIRED IN PRINT
+     --------------------------------------------------------- */
+
+  .no-print,
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+  /* ---------------------------------------------------------
+     REMOVE ALL APP LAYOUT HEIGHT / WIDTH SIDE EFFECTS
+     --------------------------------------------------------- */
+
+  .app-shell,
+  .main-content,
+  .create-page,
+  .quotation-workspace,
+  .preview-panel,
+  .preview-scale-container {
+    position: static !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    overflow: visible !important;
+
+    background: #ffffff !important;
+
+    transform: none !important;
+  }
+
+  /* ---------------------------------------------------------
+     IMPORTANT:
+     REMOVE DESKTOP SIDEBAR OFFSET
+     --------------------------------------------------------- */
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /* ---------------------------------------------------------
+     WORKSPACE MUST NOT USE GRID DURING PRINT
+     --------------------------------------------------------- */
+
+  .quotation-workspace {
+    display: block !important;
+
+    grid-template-columns: none !important;
+    gap: 0 !important;
+
+    align-items: initial !important;
+  }
+
+  /* ---------------------------------------------------------
+     PREVIEW CONTAINERS
+     --------------------------------------------------------- */
+
+  .preview-panel {
+    display: block !important;
+
+    margin-top: 0 !important;
+
+    overflow: visible !important;
+  }
+
+  .preview-scale-container {
+    display: block !important;
+
+    justify-content: initial !important;
+    align-items: initial !important;
+
+    transform: none !important;
+    transform-origin: initial !important;
+
+    overflow: visible !important;
+  }
+
+  /* ---------------------------------------------------------
+     EXACT SINGLE A4 PAGE
+     --------------------------------------------------------- */
+
+  .a4-page {
+    position: relative !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+    transform-origin: initial !important;
+
+    break-before: auto !important;
+    break-after: auto !important;
+    break-inside: avoid !important;
+
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* ---------------------------------------------------------
+     CRITICAL FIX:
+     REMOVE FORCED PAGE BREAK FROM EVERY A4 PAGE
+     --------------------------------------------------------- */
+
+  .a4-page:last-child,
+  .a4-page:only-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+
+  /* ---------------------------------------------------------
+     LETTERHEAD BACKGROUND
+     --------------------------------------------------------- */
+
+  .letterhead-background {
+    position: absolute !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
+    z-index: 0 !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill !important;
+
+    pointer-events: none !important;
+
+    transform: none !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* ---------------------------------------------------------
+     QUOTATION DOCUMENT
+     --------------------------------------------------------- */
+
+  .quotation-document {
+    position: relative !important;
+
+    z-index: 1 !important;
+
+    display: block !important;
+
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    max-height: 297mm !important;
+
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+
+    box-sizing: border-box !important;
+
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* ---------------------------------------------------------
+     PREVENT INTERNAL SECTIONS FROM CREATING EXTRA PAGE
+     --------------------------------------------------------- */
+
+  .quotation-top-information,
+  .reference-subject-row,
+  .reference-salutation,
+  .reference-introduction,
+  .quotation-item-section,
+  .reference-item-table,
+  .reference-specifications,
+  .reference-spec-grid,
+  .reference-spec-row,
+  .reference-terms,
+  .reference-term-row,
+  .reference-query-text,
+  .reference-signature {
+    max-width: 100% !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /* ---------------------------------------------------------
+     REMOVE ACCIDENTAL BOTTOM MARGINS
+     --------------------------------------------------------- */
+
+  .quotation-document > *:last-child,
+  .reference-signature:last-child,
+  .reference-signature p:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  /* ---------------------------------------------------------
+     ENSURE IMAGES DO NOT CREATE OVERFLOW
+     --------------------------------------------------------- */
+
+  .a4-page img,
+  .quotation-document img {
+    max-width: 100% !important;
+  }
+
+  /* ---------------------------------------------------------
+     PREVENT PSEUDO ELEMENTS FROM CREATING PRINT OVERFLOW
+     --------------------------------------------------------- */
+
+  .a4-page::before,
+  .a4-page::after,
+  .quotation-document::before,
+  .quotation-document::after {
+    box-sizing: border-box !important;
+  }
+}
+
+
+/* =========================================================
+   CHROME PRINT EXTRA BLANK PAGE PROTECTION
+   ========================================================= */
+
+@media print {
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body > * {
+    margin-bottom: 0 !important;
+  }
+
+  .app-shell {
+    min-height: 0 !important;
+  }
+
+  .main-content {
+    min-height: 0 !important;
+  }
+
+  .create-page {
+    min-height: 0 !important;
+  }
+
+  .quotation-workspace {
+    min-height: 0 !important;
+  }
+
+  .preview-panel {
+    min-height: 0 !important;
+  }
+
+  .preview-scale-container {
+    min-height: 0 !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL OVERRIDE
+   MUST REMAIN AT VERY END OF CSS FILE
+   ========================================================= */
+
+@media print {
+
+  .a4-page {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .a4-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+}
+/* =========================================================
+   FINAL PRINT SYSTEM
+   AL FALAH COAL TRADER
+   A4 SINGLE PAGE + NO BLANK SECOND PAGE
+   ========================================================= */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html,
+  body,
+  #root {
+    width: 210mm !important;
+    height: 296.5mm !important;
+    min-width: 210mm !important;
+    min-height: 296.5mm !important;
+    max-width: 210mm !important;
+    max-height: 296.5mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff !important;
+  }
+
+  html,
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print,
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+  .app-shell,
+  .main-content,
+  .create-page,
+  .quotation-workspace,
+  .preview-panel,
+  .preview-scale-container {
+    display: block !important;
+
+    position: static !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 296.5mm !important;
+    min-height: 296.5mm !important;
+    max-height: 296.5mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff !important;
+
+    transform: none !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  .quotation-workspace {
+    display: block !important;
+
+    grid-template-columns: none !important;
+    gap: 0 !important;
+  }
+
+  .preview-panel,
+  .preview-scale-container {
+    position: relative !important;
+  }
+
+  .a4-page {
+    position: relative !important;
+
+    display: block !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    /*
+      Slightly below 297mm intentionally.
+      This prevents Chrome fractional-pixel rounding
+      from generating an empty second page.
+    */
+    height: 296.5mm !important;
+    min-height: 296.5mm !important;
+    max-height: 296.5mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    outline: 0 !important;
+
+    overflow: hidden !important;
+
+    background: #ffffff !important;
+
+    box-shadow: none !important;
+
+    transform: none !important;
+    transform-origin: top left !important;
+
+    page-break-before: avoid !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+
+    break-before: avoid !important;
+    break-after: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .a4-page:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .letterhead-background {
+    display: block !important;
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    z-index: 0 !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 296.5mm !important;
+    min-height: 296.5mm !important;
+    max-height: 296.5mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill !important;
+
+    pointer-events: none !important;
+  }
+
+  .quotation-document {
+    position: relative !important;
+
+    z-index: 1 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+    max-height: 100% !important;
+
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+  }
+
+  .quotation-item-section,
+  .reference-specifications,
+  .reference-term-row,
+  .reference-signature {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .a4-page img,
+  .quotation-document img {
+    max-width: 100% !important;
+  }
+
+  body > * {
+    margin-bottom: 0 !important;
+  }
+}
+/* =========================================================
+   FINAL CHROME PRINT FIX
+   REMOVE BLANK / DUPLICATE SECOND PAGE ONLY
+   KEEP ALL EXISTING SCREEN + RESPONSIVE CSS UNCHANGED
+   ========================================================= */
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+@media print {
+
+  html,
+  body,
+  #root {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-width: 210mm !important;
+    min-height: 0 !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #fff !important;
+  }
+
+  body {
+    position: relative !important;
+  }
+
+  /* Hide complete application UI during print */
+  .sidebar,
+  .mobile-header,
+  .sidebar-overlay,
+  .create-topbar,
+  .quotation-form-panel {
+    display: none !important;
+  }
+
+  /* Remove application layout dimensions */
+  .app-shell,
+  .main-content,
+  .create-page,
+  .quotation-workspace,
+  .preview-panel,
+  .preview-scale-container {
+    width: 210mm !important;
+    height: 297mm !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    display: block !important;
+
+    overflow: hidden !important;
+
+    transform: none !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /*
+    IMPORTANT:
+    Use slightly less than 297mm to prevent Chrome's
+    fractional print-layout rounding from creating page 2.
+  */
+  .a4-page {
+    position: relative !important;
+
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+
+    height: 296.8mm !important;
+    min-height: 296.8mm !important;
+    max-height: 296.8mm !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: none !important;
+    transform-origin: initial !important;
+
+    overflow: hidden !important;
+
+    box-shadow: none !important;
+
+    break-before: auto !important;
+    break-after: auto !important;
+    break-inside: avoid !important;
+
+    page-break-before: auto !important;
+    page-break-after: auto !important;
+    page-break-inside: avoid !important;
+  }
+
+  .letterhead-background {
+    position: absolute !important;
+    inset: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: fill !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .quotation-document {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    min-height: 0 !important;
+    max-height: 100% !important;
+
+    margin: 0 !important;
+
+    overflow: hidden !important;
+
+    box-sizing: border-box !important;
+
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /*
+    Prevent hidden or empty elements from forcing
+    an additional printed page.
+  */
+  .a4-page::before,
+  .a4-page::after,
+  .preview-panel::before,
+  .preview-panel::after,
+  .preview-scale-container::before,
+  .preview-scale-container::after {
+    display: none !important;
+    content: none !important;
+  }
+}
