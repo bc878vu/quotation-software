@@ -1,16 +1,48 @@
-# React + Vite
+# CVForge AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+AI-powered CV / resume builder with built-in templates, live A4 preview, local document storage, template selection, and a secure server-side AI endpoint.
 
-Currently, two official plugins are available:
+## Current foundation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Next.js App Router + React + TypeScript
+- My CVs dashboard
+- Multiple CV documents
+- Six built-in templates
+- Live A4 CV preview
+- Responsive editor
+- Experience, education, skills and project-ready data model
+- AI Assistant UI
+- Secure `/api/ai` endpoint using the OpenAI Responses API
+- No API key exposed to the browser
 
-## React Compiler
+## Run locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the Oxlint configuration
+For AI features, create `.env.local`:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```env
+OPENAI_API_KEY=your_server_side_key
+OPENAI_MODEL=gpt-5.6-luna
+```
+
+The AI endpoint is intentionally server-side so the secret is never shipped to the client.
+
+## Product roadmap
+
+1. Real AI writing actions connected to the editor
+2. Job-description analyzer and ATS scoring
+3. Custom Template Studio with drag/drop sections
+4. Database/authentication and cloud sync
+5. PDF/DOCX export pipeline
+6. Profile photo/file storage
+7. Admin template management
+8. Subscription/credit system
+9. Template sharing / marketplace
+
+## Branch
+
+The first implementation is being developed on `ai-cv-builder` so the original quotation application remains untouched on `main`.
